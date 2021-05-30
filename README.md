@@ -1,6 +1,6 @@
 # TYPONiels Techradar-Extension for TYPO3
 
-With this extension, my techradar (radar.niels-langlotz.com) can be easily imported into TYPO3 to have the date directly in the CMS (e.g. for Solr).
+With this extension, [My Techradar](https://radar.niels-langlotz.com) can be easily imported into TYPO3 to have the data directly in the CMS (e.g. for Solr).
 
 ---
 
