@@ -33,4 +33,15 @@ phpmd:
   dependencies:
     - build_composer
   script:
-    - php ./vendor/bin/phpmd ./Classes/ ansi ./phpmd.xml --exclude Classes/Vendor/*
+    - php ./vendor/bin/phpmd ./Classes/ ansi ./phpmd.xml
+
+phpstan:
+  image: "php:7.4"
+  stage: check
+  artifacts:
+    paths:
+      - phpmd.html
+  before_script:
+    - echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit.ini
+  script:
+    - php -d memory_limit=512M ./vendor/bin/phpstan analyze ./Classes/ --level 5
