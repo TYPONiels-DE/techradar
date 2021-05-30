@@ -42,7 +42,7 @@ class TechradarImportCommand extends Command
         $importService = GeneralUtility::makeInstance(DataImportService::class);
         $import = $importService->importFromCLI($extensionConfiguration);
         $io->writeln($import);
-        if($import == 0) {
+        if ($import == 0) {
             $io->writeln('Import was successfull');
         } else {
             throw new \Exception('Something gone wrong while import data from Cockpit');

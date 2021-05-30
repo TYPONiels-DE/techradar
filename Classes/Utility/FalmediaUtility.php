@@ -36,7 +36,7 @@ class FalmediaUtility
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderReadPermissionsException
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderWritePermissionsException
      */
-    public function tempoaryFile($url = null, $filename = null, $subdirName)
+    public function tempoaryFile($url = null, $filename = null, $subdirName = 'Radar')
     {
         if (filter_var($url, FILTER_VALIDATE_URL)) {
             $storage = $this->resourceFactory->getDefaultStorage();
@@ -49,7 +49,8 @@ class FalmediaUtility
             if (!$storage->getFolder(self::REDACTION_DIRECTORY)->hasFolder(self::UPLOAD_DIRECTORY)) {
                 $storage->createFolder(
                     self::UPLOAD_DIRECTORY,
-                    $storage->getFolder(self::REDACTION_DIRECTORY));
+                    $storage->getFolder(self::REDACTION_DIRECTORY)
+                );
             }
             // redaktion/Techradar/Lernplan
             if (!$storage->getFolder(self::REDACTION_DIRECTORY)->getSubfolder(self::UPLOAD_DIRECTORY)->hasFolder(ucfirst(strtolower($subdirName)))) {

@@ -15,14 +15,12 @@ use TYPO3\CMS\Extbase\Annotation\Inject;
 use TN\Techradar\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
-
 class DataImportService
 {
 
-    const successfull = 0;
-    const error = 1;
-    const REPRO_Namespace = 'TN\Techradar\Domain\Repository\\';
-    const MODEL_Namespace = 'TN\Techradar\Domain\Model\\';
+    const SUCCESSFULL = 0;
+    const TNREPRO = 'TN\Techradar\Domain\Repository\\';
+    const TNMODEL = 'TN\Techradar\Domain\Model\\';
 
     /**
      * @var PersistenceManager
@@ -40,18 +38,18 @@ class DataImportService
      * @param array $extensionConfiguration
      * @return int
      */
-    public function importFromCLI (Array $extensionConfiguration)
+    public function importFromCLI(array $extensionConfiguration)
     {
         $collections = [];
         if ($extensionConfiguration['importCollections'] != null) {
-
             // Transfer Collection from ExtensionConfiguration to CollectionConfigArray
             foreach (explode(',', $extensionConfiguration['importCollections']) as $collection) {
                 $collections[] = [
                     'name' => $this->checkForWrongCollectionName(ucfirst(trim($collection))),
                     'className' => $this->checkIfClassExists(
                         $this->checkForWrongCollectionName(ucfirst(trim($collection))),
-                        self::REPRO_Namespace)
+                        self::TNREPRO
+                    )
                 ];
             }
 
@@ -61,8 +59,7 @@ class DataImportService
             }
 
             // Import was successfull
-            return self::successfull;
-
+            return self::SUCCESSFULL;
         } else {
             throw new \Error('No Collection was defined in ExtensionConfiguration');
         }
@@ -77,15 +74,14 @@ class DataImportService
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
      * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
-    public function fetchAndImport (string $collectionRepository, string $collectionName, array $extensionConfig): int
+    public function fetchAndImport(string $collectionRepository, string $collectionName, array $extensionConfig): int
     {
         /* @var CockpitImportUtility $importUtil */
         $importUtil = GeneralUtility::makeInstance(CockpitImportUtility::class);
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
         // If not a ReproCollection write to DTO Array
-        if($collectionRepository !== false && !empty($collectionRepository)) {
-
+        if ($collectionRepository !== false && !empty($collectionRepository)) {
             $repository = $objectManager->get($collectionRepository);
             $persistManager = $objectManager->get(PersistenceManager::class);
 
@@ -95,7 +91,7 @@ class DataImportService
                 if ((int)$isUnique > 0) {
                     $collectionItem = $repository->findOneByCpid($cockpitCollectionItem->_id);
                 } else {
-                    $collectionItem = GeneralUtility::makeInstance(self::MODEL_Namespace . ucfirst($collectionName));
+                    $collectionItem = GeneralUtility::makeInstance(self::TNMODEL . ucfirst($collectionName));
                 }
 
                 // Delete old Mediafiles from Storange
@@ -103,7 +99,9 @@ class DataImportService
                     $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
                     $fileObjects = $fileRepository->findByRelation(
                         'tx_techradar_domain_model_' . strtolower($collectionName),
-                        'media', $collectionItem->getUid());
+                        'media',
+                        $collectionItem->getUid()
+                    );
                     foreach ($fileObjects as $fileObject) {
                         $file = $fileObject->getOriginalFile();
                         $file->getStorage()->deleteFile($file);
@@ -137,7 +135,8 @@ class DataImportService
                 if ($collectionName === 'Techradar') {
                     $collectionItem->setBaseurl($extensionConfig['techradarUrl']);
                     $collectionItem->setUrl(
-                        $extensionConfig['techradarUrl']  . $this->DTOData['quadrant'][$cockpitCollectionItem->quadrant] . $collectionItem->getTitleSlug());
+                        $extensionConfig['techradarUrl']  . $this->DTOData['quadrant'][$cockpitCollectionItem->quadrant] . $collectionItem->getTitleSlug()
+                    );
                 } elseif ($collectionName === 'Lernplan') {
                     $collectionItem->setBaseurl($extensionConfig['techradarUrl']);
                     $collectionItem->setUrl(
@@ -155,15 +154,15 @@ class DataImportService
                     $repository->add($collectionItem);
                 }
                 $persistManager->persistAll();
-                unset($radarItem);
+                unset($collectionItem);
             }
-            return self::successfull;
+            return self::SUCCESSFULL;
         } else {
             $this->DTOData[strtolower($collectionName)] = [];
             foreach ($importUtil->getCockpitData($collectionName, $extensionConfig)->entries as $collectionDtoItem) {
-                array_push($this->DTOData[strtolower($collectionName)],  [$collectionDtoItem->Identifier => $collectionDtoItem->title_slug]);
+                array_push($this->DTOData[strtolower($collectionName)], [$collectionDtoItem->Identifier => $collectionDtoItem->title_slug]);
             }
-            return self::successfull;
+            return self::SUCCESSFULL;
         }
     }
 
@@ -172,7 +171,8 @@ class DataImportService
      * @param $collectionItem
      * @param $cockpitCollectionItem
      */
-    public function dynamicSetter (array $fields = [], $collectionItem, $cockpitCollectionItem) {
+    public function dynamicSetter(array $fields, $collectionItem, $cockpitCollectionItem)
+    {
         foreach ($fields as $setterField) {
             // Prepare SetterField (underscore to UpperCammelcase)
             $validSetterField = preg_replace_callback("/_[a-z]?/", function ($matches) {
@@ -180,7 +180,7 @@ class DataImportService
             }, $setterField);
 
             // Check if Model has SetterMethod and execute
-            if(method_exists($collectionItem,'set' . ucfirst($validSetterField))) {
+            if (method_exists($collectionItem, 'set' . ucfirst($validSetterField))) {
                 $collectionItem->{'set' . ucfirst($validSetterField)}($cockpitCollectionItem->{$setterField} ?? '');
             }
         }
@@ -193,21 +193,25 @@ class DataImportService
      * @param $collectionName
      * @return string
      */
-    public function checkForWrongCollectionName ($collectionName) {
-        if ($collectionName == 'Leanplan')
+    public function checkForWrongCollectionName($collectionName)
+    {
+        if ($collectionName == 'Leanplan') {
             return 'Lernplan';
-        else
+        } else {
             return $collectionName;
+        }
     }
 
     /**
      * @param $collectionName
      * @return bool|string
      */
-    public function checkIfClassExists ($collectionName, $namespace) {
-        if(class_exists($namespace . $collectionName . 'Repository'))
+    public function checkIfClassExists($collectionName, $namespace)
+    {
+        if (class_exists($namespace . $collectionName . 'Repository')) {
             return $namespace . $collectionName . 'Repository';
-        else
+        } else {
             return false;
+        }
     }
 }

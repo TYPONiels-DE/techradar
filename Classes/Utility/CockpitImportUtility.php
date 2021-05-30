@@ -27,13 +27,14 @@ class CockpitImportUtility
         if ($collection == 'lernplan') {
             $collection = 'leanplan';
         }
-        $response = $this->requestFactory->request( $extensionConfig['cockpitUrl'] . '/api/collections/get/' . $collection,
+        $response = $this->requestFactory->request(
+            $extensionConfig['cockpitUrl'] . '/api/collections/get/' . $collection,
             'GET',
             $additionalOptions = [
                 'headers' => ['Cache-Control' => 'no-cache', 'Cockpit-Token' => $extensionConfig['cockpitToken']],
                 'allow_redirects' => true,
                 'cookies' => false,
-            ]
+             ]
         );
         if ($response->getStatusCode() === 200) {
             if (strpos($response->getHeaderLine('Content-Type'), 'application/json') === 0) {
@@ -45,7 +46,4 @@ class CockpitImportUtility
             throw new \Exception('Not Authenticated');
         }
     }
-
-
-
 }
