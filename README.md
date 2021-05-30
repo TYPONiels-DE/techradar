@@ -1,4 +1,4 @@
-# TYPONiels Techradar-Extension for TYPO3
+# TYPONiels Techradar-Extension (Importer) for TYPO3
 
 With this extension, [My Techradar](https://radar.niels-langlotz.com) can be easily imported into TYPO3 to have the data directly in the CMS (e.g. for Solr).
 
@@ -23,7 +23,7 @@ To get the Extension directly from this Gitlab please add the following to your 
 
 ---
 
-### Setup of the Downloads-Extension
+### Setup of the Techradar-Extension
 
 1. The Setup of the Extension is quite easy. Just Install and activate it in the extensionmanager.
 2. Create a sysfolder-page in your sitetree
