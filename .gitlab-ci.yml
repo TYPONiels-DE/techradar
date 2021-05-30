@@ -8,10 +8,7 @@ stages:
 
 build_composer:
   stage: build
-  image: "php:7.4"
-  before_script:
-    - apt-get update && apt-get install -y libzip-dev unzip git curl && docker-php-ext-install zip
-    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  image: "composer:latest"
   script:
     - composer install --no-interaction --verbose
   artifacts:
@@ -30,6 +27,8 @@ php-codesniffer:
 phpmd:
   image: "php:7.4"
   stage: check
+  artifacts:
+    untracked: true
   dependencies:
     - build_composer
   script:
@@ -39,8 +38,9 @@ phpstan:
   image: "php:7.4"
   stage: check
   artifacts:
-    paths:
-      - phpmd.html
+    untracked: true
+  dependencies:
+    - build_composer
   before_script:
     - echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit.ini
   script:
