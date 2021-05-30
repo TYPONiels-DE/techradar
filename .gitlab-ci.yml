@@ -41,7 +41,5 @@ phpstan:
     untracked: true
   dependencies:
     - build_composer
-  before_script:
-    - echo "memory_limit=512M" > /usr/local/etc/php/conf.d/memory-limit.ini
   script:
     - php -d memory_limit=512M ./vendor/bin/phpstan analyze ./Classes/ --level 5
