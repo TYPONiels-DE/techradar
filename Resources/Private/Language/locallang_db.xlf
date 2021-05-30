@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2021-05-30T16:24:12Z"
+          product-name="techradar">
+        <header/>
+        <body>
+
+            <!-- Techradar TCA -->
+            <trans-unit id="tx_techradar_domain_model_techradar">
+                <source>Techradar</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.cpid">
+                <source>Cockpit-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.subtitle">
+                <source>Subtitle</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.titleSlug">
+                <source>Title-Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.slugadditional">
+                <source>Additional Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.teaser">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.bodytext">
+                <source>Bodytext</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.visible">
+                <source>Visible</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.url">
+                <source>Url</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.baseurl">
+                <source>Baseurl</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.quadrant">
+                <source>Quadrant</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.area">
+                <source>Area</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.level">
+                <source>Level</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.mediabgcolor">
+                <source>Background Color</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.media">
+                <source>Media</source>
+            </trans-unit>
+
+            <!-- Lernplan TCA -->
+            <trans-unit id="tx_techradar_domain_model_lernplan">
+                <source>Lernplan</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.cpid">
+                <source>Cockpit-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.subtitle">
+                <source>Subtitle</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.titleSlug">
+                <source>Title-Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.slugadditional">
+                <source>Additional Slug</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.teaser">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.bodytext">
+                <source>Bodytext</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.visible">
+                <source>Visible</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.url">
+                <source>Url</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.baseurl">
+                <source>Baseurl</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.quadrant">
+                <source>Quadrant</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.area">
+                <source>Area</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.level">
+                <source>Level</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.mediabgcolor">
+                <source>Background Color</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.media">
+                <source>Media</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

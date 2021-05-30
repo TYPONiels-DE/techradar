@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: true
+
+  TN\Techradar\Command\:
+    resource: '../Classes/Command/*'
+
+  TN\Techradar\Command\TechradarImportCommand:
+    tags:
+      - name: 'console.command'
+        command: 'typoniels:techradarImport'

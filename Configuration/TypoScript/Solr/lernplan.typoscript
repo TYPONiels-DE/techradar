@@ -1,0 +1,47 @@
+plugin.tx_solr.index.queue.lernplan = 1
+plugin.tx_solr.index.queue.lernplan {
+  additionalPageIds = 837
+  table = tx_typoniels_domain_model_lernplan
+  name = lernplan
+  fields {
+    title = title
+    subtitle = subtitle
+    content = SOLR_CONTENT
+    content {
+      cObject = COA
+      cObject {
+        10 = TEXT
+        10 {
+          field = teaser
+          noTrimWrap = || |
+        }
+        20 = TEXT
+        20 {
+          field = bodytext
+          noTrimWrap = || |
+        }
+      }
+    }
+    bild_stringS = FILES
+    bild_stringS {
+      references {
+        table= tx_typoniels_domain_model_lernplan
+        uid.data = field:uid
+        fieldName= media
+      }
+      begin = 0
+      maxItems = 1
+      renderObj = TEXT
+      renderObj {
+        stdWrap.data = file:current:publicUrl
+        stdWrap.wrap = |
+      }
+    }
+    url = url
+    status_stringS = status
+    quadrant_stringS = quadrant
+    area_stringS = area
+    level_stringS = level
+    mediabgcolor_stringS = mediabgcolor
+  }
+}
