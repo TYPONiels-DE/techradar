@@ -10,7 +10,10 @@
             "homepage": "https://www.typoniels.de"
         }
     ],
-    "license": "GPL-2.0-or-later",
+    "minimum-stability": "stable",
+    "license": [
+      "GPL-2.0-or-later"
+    ],
     "repositories": [
         {
             "type": "composer",
@@ -23,11 +26,11 @@
         }
     },
     "require": {
-        "php": "7.2.* || 7.3.* || 7.4.* || 8.0.*",
-        "typo3/cms-core": "^9.5 || ^10.4 || ^11",
-        "typo3/cms-extbase": "^9.5 || ^10.4 || ^11",
-        "typo3/cms-fluid": "^9.5 || ^10.4 || ^11",
-        "typo3/cms-frontend": "^9.5 || ^10.4 || ^11"
+        "php": "7.2.* || 7.3.* || 7.4.*",
+        "typo3/cms-core": "^9.5 || ^10.4",
+        "typo3/cms-extbase": "^9.5 || ^10.4",
+        "typo3/cms-fluid": "^9.5 || ^10.4",
+        "typo3/cms-frontend": "^9.5 || ^10.4"
     },
     "autoload": {
         "psr-4": {
