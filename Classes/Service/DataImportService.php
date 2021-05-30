@@ -168,8 +168,9 @@ class DataImportService
 
     /**
      * @param array $fields
-     * @param $collectionItem
-     * @param $cockpitCollectionItem
+     * @param mixed $collectionItem
+     * @param mixed $cockpitCollectionItem
+     * @return mixed
      */
     public function dynamicSetter(array $fields, $collectionItem, $cockpitCollectionItem)
     {
@@ -190,10 +191,10 @@ class DataImportService
     /**
      * Workaround for wrong named Collection
      * @TODO: Change Naming in Cockpit
-     * @param $collectionName
+     * @param string $collectionName
      * @return string
      */
-    public function checkForWrongCollectionName($collectionName)
+    public function checkForWrongCollectionName(string $collectionName)
     {
         if ($collectionName == 'Leanplan') {
             return 'Lernplan';
@@ -203,10 +204,11 @@ class DataImportService
     }
 
     /**
-     * @param $collectionName
+     * @param string $collectionName
+     * @param string $namespace
      * @return bool|string
      */
-    public function checkIfClassExists($collectionName, $namespace)
+    public function checkIfClassExists(string $collectionName, string $namespace)
     {
         if (class_exists($namespace . $collectionName . 'Repository')) {
             return $namespace . $collectionName . 'Repository';

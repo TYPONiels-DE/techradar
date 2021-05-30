@@ -2,6 +2,7 @@
 
 namespace TN\Techradar\Utility;
 
+use TYPO3\CMS\Core\Resource\File;
 use TYPO3\CMS\Core\Resource\ResourceFactory;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -30,7 +31,7 @@ class FalmediaUtility
 
     /**
      * @param null $url
-     * @return string|null
+     * @return \TYPO3\CMS\Core\Resource\File|int
      * @throws \TYPO3\CMS\Core\Resource\Exception\ExistingTargetFolderException
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderAccessPermissionsException
      * @throws \TYPO3\CMS\Core\Resource\Exception\InsufficientFolderReadPermissionsException
@@ -59,7 +60,9 @@ class FalmediaUtility
                     $storage->getFolder(self::REDACTION_DIRECTORY)->getSubfolder(self::UPLOAD_DIRECTORY)
                 );
             }
-
+            if ($url == null) {
+                return 0;
+            }
             $externalFile = GeneralUtility::getUrl($url);
             if ($externalFile) {
                 $tempFileName = tempnam(sys_get_temp_dir(), self::TEMP_PREFIX);
@@ -71,11 +74,14 @@ class FalmediaUtility
                     self::REDACTION_DIRECTORY
                 )->getSubfolder(self::UPLOAD_DIRECTORY)->getSubfolder(ucfirst(strtolower($subdirName)));
 
+                /* @var File $file */
                 $file = $uploadDir->addFile($tempFileName, $filename . '.jpg', DuplicationBehavior::REPLACE);
                 return $file;
             } else {
                 throw new \Exception(sprintf('External URL % cannot accessed.', $url), 1473233519);
             }
+        } else {
+            return 0;
         }
     }
 

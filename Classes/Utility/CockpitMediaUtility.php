@@ -29,12 +29,12 @@ class CockpitMediaUtility
     protected $imageService = null;
 
     /**
-     * @param $media
+     * @param \stdClass $media
      * @param object $cockpitRadarItem
      * @return string
      * @throws \Exception
      */
-    public function getMedia($media, object $cockpitRadarItem, string $collectionName)
+    public function getMedia(\stdClass $media, object $cockpitRadarItem, string $collectionName)
     {
         if ($this->requestFactory == null) {
             $this->requestFactory = GeneralUtility::makeInstance(RequestFactory::class);
@@ -75,36 +75,5 @@ class CockpitMediaUtility
         } else {
             throw new \Exception($response->getStatusCode() . 'Not Authenticated');
         }
-    }
-
-    /**
-     * @param $imageResource
-     * @param string $cropVariant
-     * @return string
-    */
-    public function getSmallImage($imageResource, $cropVariant = 'default')
-    {
-        if ($this->imageService == null) {
-            $this->imageService = GeneralUtility::makeInstance(ImageService::class);
-        }
-        $image = $this->imageService->getImage($this->getImageUrl($imageResource), null, false);
-        $cropVariantCollection = CropVariantCollection::create((string)$imageResource->getOriginalResource()->getProperty('crop'));
-        $cropArea = $cropVariantCollection->getCropArea($cropVariant);
-        $processingInstructions = [
-            'maxWidth' => 900,
-            'maxHeight' => 500,
-            'crop' => $cropArea->makeAbsoluteBasedOnFile($image),
-        ];
-        $processedImage = $this->imageService->applyProcessingInstructions($image, $processingInstructions);
-        return $this->imageService->getImageUri($processedImage, true);
-    }
-
-    /**
-     * @param $imageResource
-     * @return mixed
-    */
-    public function getImageUrl($imageResource)
-    {
-        return $imageResource->getOriginalResource()->getOriginalFile()->getPublicUrl();
     }
 }

@@ -33,16 +33,6 @@ class FileReference extends \TYPO3\CMS\Extbase\Domain\Model\FileReference
     protected $file = null;
 
     /**
-     * @param \TYPO3\CMS\Core\Resource\ResourceInterface $originalResource
-     */
-    public function setOriginalResource(ResourceInterface $originalResource)
-    {
-        $this->originalResource = $originalResource;
-        $this->originalFileIdentifier = (int)$originalResource->getOriginalFile()->getUid();
-        $this->uidLocal = (int)$originalResource->getOriginalFile()->getUid();
-    }
-
-    /**
      * setFile
      *
      * @param \TYPO3\CMS\Core\Resource\File $falFile

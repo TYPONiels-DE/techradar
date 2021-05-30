@@ -79,7 +79,7 @@ class Techradar extends AbstractEntity
     /**
      * @var string
      */
-    protected $baseurl = 'https://radar.niels-langlotz.com/technologien/';
+    protected $baseurl = '';
 
     /**
      * @var string
@@ -89,38 +89,16 @@ class Techradar extends AbstractEntity
     /**
      * media
      *
-     * @var \TN\Techradar\Domain\Model\FileReference
+     * @var \TN\Techradar\Domain\Model\FileReference | int
      */
     protected $media = 0;
 
     /**
      * image
      *
-     * @var \TN\Techradar\Domain\Model\FileReference
+     * @var \TN\Techradar\Domain\Model\FileReference | int
      */
     protected $promotiomedia = 0;
-
-    /**
-     * __construct
-     */
-    public function __construct()
-    {
-        //Do not remove the next line: It would break the functionality
-        $this->initStorageObjects();
-    }
-
-    /**
-     * Initializes all ObjectStorage properties
-     * Do not modify this method!
-     * It will be rewritten on each save in the extension builder
-     * You may modify the constructor of this class instead
-     *
-     * @return void
-     */
-    protected function initStorageObjects()
-    {
-        $this->images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-    }
 
     /**
      * @return int
@@ -441,31 +419,5 @@ class Techradar extends AbstractEntity
     public function setPromotiomedia($promotiomedia): void
     {
         $this->promotiomedia = $promotiomedia;
-    }
-
-    /**
-     * @param  string $heroimagePosition
-     * @return void
-     */
-    public function setHeroimagePosition($heroimagePosition)
-    {
-        $this->heroimagePosition = $heroimagePosition;
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-     */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * @param  \TYPO3\CMS\Extbase\Persistence\ObjectStorage $images
-     * @return void
-     */
-    public function setImages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $images)
-    {
-        $this->images = $images;
     }
 }

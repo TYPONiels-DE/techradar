@@ -29,16 +29,18 @@ class LernplanRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * Finds all by specific pid
      *
-     * @param  $pid
+     * @param  int $pid
      * @return mixed
      */
-    public function findByPid($pid)
+    public function findByPid(int $pid)
     {
         $query = $this->createQuery();
         $matching = [];
 
         $matching[] = $query->logicalOr(
-            $query->like('sysLanguageUid', -1),
+            $query->like('sysLanguageUid', (string) -1)
+        );
+        $matching[] = $query->logicalOr(
             $query->like('sysLanguageUid', $GLOBALS['TSFE']->context->getAspect('language')->getId())
         );
         $query->matching(
