@@ -1,0 +1,17 @@
+# cat=basic/enable; type=string; label=Url of the Cockpit-System (without slash)
+cockpitUrl =
+
+# cat=basic/enable; type=string; label=Token to authenticate
+cockpitToken =
+
+# cat=basic/enable; type=string; label=Name of collection for import
+importCollections =
+
+# cat=basic/enable; type=string; label=Url for Techradar Detailpage (with slash)
+techradarUrl =
+
+# cat=basic/enable; type=string; label=Url for Lernplan Detailpage (with slash)
+lernplanUrl =
+
+# cat=basic/enable; type=string; label=PID for Data
+cockpitDataPid =
