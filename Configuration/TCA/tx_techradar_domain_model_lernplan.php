@@ -35,7 +35,7 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
     ),
     'types' => array(
         '1' => array('showitem' => '
-			    --div--;Techradar Datensatz,
+			    --div--;Lernplan Datensatz,
 			        --palette--;Basic;basic,
 			        --palette--;Cockpit;cockpit,
 			        --palette--;Titles;titles,
