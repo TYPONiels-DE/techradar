@@ -43,7 +43,7 @@ class TechradarImportCommand extends Command
         $import = $importService->importFromCLI($extensionConfiguration);
         $io->writeln($import);
         if($import == 0) {
-            $io->writeln('Import war erfolgreich.');
+            $io->writeln('Import was successfull');
         } else {
             throw new \Exception('Something gone wrong while import data from Cockpit');
         }
