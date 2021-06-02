@@ -9,6 +9,6 @@ foreach (['tx_typoniels_domain_model_techradar', 'tx_typoniels_domain_model_lern
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
     'techradar',
-    'Configuration/TypoScript/Solr',
+    'Configuration/TypoScript',
     'Techradar (Solr)'
 );

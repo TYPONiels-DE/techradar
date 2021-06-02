@@ -1,7 +1,7 @@
 plugin.tx_solr.index.queue.techradar = 1
 plugin.tx_solr.index.queue.techradar {
   additionalPageIds = 837
-  table = tx_typoniels_domain_model_techradar
+  table = tx_techradar_domain_model_techradar
   name = techradar
   fields {
     title = title
@@ -25,7 +25,7 @@ plugin.tx_solr.index.queue.techradar {
     bild_stringS = FILES
     bild_stringS {
       references {
-        table= tx_typoniels_domain_model_techradar
+        table= tx_techradar_domain_model_techradar
         uid.data = field:uid
         fieldName= media
       }

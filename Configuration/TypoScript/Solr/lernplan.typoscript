@@ -1,7 +1,7 @@
 plugin.tx_solr.index.queue.lernplan = 1
 plugin.tx_solr.index.queue.lernplan {
   additionalPageIds = 837
-  table = tx_typoniels_domain_model_lernplan
+  table = tx_techradar_domain_model_lernplan
   name = lernplan
   fields {
     title = title
@@ -25,7 +25,7 @@ plugin.tx_solr.index.queue.lernplan {
     bild_stringS = FILES
     bild_stringS {
       references {
-        table= tx_typoniels_domain_model_lernplan
+        table= tx_techradar_domain_model_lernplan
         uid.data = field:uid
         fieldName= media
       }
