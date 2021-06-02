@@ -128,14 +128,14 @@ class DataImportService
                     $fileReference->setFile($fileObject);
                     $fileReference->setPid((int) $extensionConfig['cockpitDataPid'] ?? 0);
                     $fileReference->setUidLocal($fileObject);
-                    $collectionItem->setMedia($fileReference ?? 0);
+                    $collectionItem->setMedia($fileReference ?? null);
                 }
 
                 // Set Urls for Solr
                 if ($collectionName === 'Techradar') {
                     $collectionItem->setBaseurl($extensionConfig['techradarUrl']);
                     $collectionItem->setUrl(
-                        $extensionConfig['techradarUrl']  . $this->DTOData['quadrant'][$cockpitCollectionItem->quadrant] . $collectionItem->getTitleSlug()
+                        $extensionConfig['techradarUrl'] . ($this->DTOData['quadrant'][$cockpitCollectionItem->quadrant]) . '/' . $collectionItem->getTitleSlug()
                     );
                 } elseif ($collectionName === 'Lernplan') {
                     $collectionItem->setBaseurl($extensionConfig['techradarUrl']);
@@ -160,7 +160,7 @@ class DataImportService
         } else {
             $this->DTOData[strtolower($collectionName)] = [];
             foreach ($importUtil->getCockpitData($collectionName, $extensionConfig)->entries as $collectionDtoItem) {
-                array_push($this->DTOData[strtolower($collectionName)], [$collectionDtoItem->Identifier => $collectionDtoItem->title_slug]);
+                $this->DTOData[strtolower($collectionName)][$collectionDtoItem->Identifier] = $collectionDtoItem->title_slug;
             }
             return self::SUCCESSFULL;
         }
