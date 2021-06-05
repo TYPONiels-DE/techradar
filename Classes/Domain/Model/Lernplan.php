@@ -88,9 +88,10 @@ class Lernplan extends AbstractEntity
 
     /**
      * media
-     * @var \TN\Techradar\Domain\Model\FileReference|null
+     *
+     * @var \TN\Techradar\Domain\Model\FileReference | int
      */
-    protected $media = null;
+    protected $media = 0;
 
     /**
      * image
