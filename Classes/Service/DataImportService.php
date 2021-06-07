@@ -118,7 +118,7 @@ class DataImportService
                     $collectionItem,
                     $cockpitCollectionItem
                 );
-                $collectionItem->setTags(implode(',',$cockpitCollectionItem->tags));
+                $collectionItem->setTags($cockpitCollectionItem->tags ? implode(',',$cockpitCollectionItem->tags) : '');
                 // Handle Media from $cockpitCollectionItem and create FileReference
                 $mediaUtil = GeneralUtility::makeInstance(CockpitMediaUtility::class);
                 if ($mediaUtil->getMedia($cockpitCollectionItem->media, $collectionItem, $collectionName) !== null) {
