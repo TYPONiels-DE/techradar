@@ -43,7 +43,7 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
 			        --palette--;Urls;urls,
 			        --palette--;Options;options,
 			        --palette--;;options2,
-			        --palette--;Background und Visability;bgoptions,
+			        --palette--;Background und Visability;bgoptions,teaser,bodytext,bodytext2,
 			    --div--;Medien,media,
 			--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,
 				hidden;;1,
@@ -61,7 +61,7 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
         'slugs' => array('showitem' => 'title_slug,slugadditional'),
         'options' => array('showitem' => 'status,quadrant'),
         'options2' => array('showitem' => 'area,level'),
-        'bgoptions' => array('showitem' => 'mediabgcolor'),
+        'bgoptions' => array('showitem' => 'mediabgcolor,tags'),
     ),
     'columns' => array(
         'sys_language_uid' => [
@@ -229,6 +229,15 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
                 'eval' => 'trim'
             ),
         ),
+        'bodytext2' => array(
+            'exclude' => 1,
+            'label' => $TNL . 'tx_techradar_domain_model_lernplan.bodytext',
+            'config' => array(
+                'type' => 'text',
+                'size' => 30,
+                'eval' => 'trim'
+            ),
+        ),
         'visible' => array(
             'exclude' => 1,
             'label' => $TNL . 'tx_techradar_domain_model_lernplan.visible',
@@ -299,7 +308,16 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
                 'eval' => 'trim'
             ),
         ),
-
+        'tags' => array(
+            'exclude' => 1,
+            'label' => $TNL . 'tx_techradar_domain_model_lernplan.tags',
+            'config' => array(
+                'type' => 'input',
+                'readOnly' => true,
+                'size' => 30,
+                'eval' => 'trim'
+            ),
+        ),
         'mediabgcolor' => array(
             'exclude' => 1,
             'label' => $TNL . 'tx_techradar_domain_model_lernplan.mediabgcolor',

@@ -113,12 +113,12 @@ class DataImportService
                 $collectionItem->setCpid($cockpitCollectionItem->_id);
                 $collectionItem->setPid((int) $extensionConfig['cockpitDataPid'] ?? 0);
                 $collectionItem = $this->dynamicSetter(
-                    ['title','subtitle','title_slug','slugadditional','teaser','bodytext',
+                    ['title','subtitle','title_slug','slugadditional','teaser','bodytext', 'bodytext2',
                         'visible','icon','area','status','quadrant','level','mediabgcolor'],
                     $collectionItem,
                     $cockpitCollectionItem
                 );
-                $collectionItem->setTags($cockpitCollectionItem->tags ? implode(',',$cockpitCollectionItem->tags) : '');
+                $collectionItem->setTags($cockpitCollectionItem->tags ? implode(',', $cockpitCollectionItem->tags) : '');
                 // Handle Media from $cockpitCollectionItem and create FileReference
                 $mediaUtil = GeneralUtility::makeInstance(CockpitMediaUtility::class);
                 if ($mediaUtil->getMedia($cockpitCollectionItem->media, $collectionItem, $collectionName) !== null) {

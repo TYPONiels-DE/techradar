@@ -46,6 +46,10 @@ class Lernplan extends AbstractEntity
     /**
      * @var string|null
      */
+    protected $bodytext2 = '';
+    /**
+     * @var string|null
+     */
     protected $icon = '';
     /**
      * @var string|null
@@ -225,6 +229,22 @@ class Lernplan extends AbstractEntity
     public function setBodytext(?string $bodytext): void
     {
         $this->bodytext = $bodytext;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getBodytext2(): ?string
+    {
+        return $this->bodytext2;
+    }
+
+    /**
+     * @param null|string $bodytext2
+     */
+    public function setBodytext2(?string $bodytext2): void
+    {
+        $this->bodytext2 = $bodytext2;
     }
 
     /**
