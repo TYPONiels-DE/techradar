@@ -14,6 +14,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Annotation\Inject;
 use TN\Techradar\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
+use Parsedown;
 
 class DataImportService
 {
@@ -182,7 +183,12 @@ class DataImportService
 
             // Check if Model has SetterMethod and execute
             if (method_exists($collectionItem, 'set' . ucfirst($validSetterField))) {
-                $collectionItem->{'set' . ucfirst($validSetterField)}($cockpitCollectionItem->{$setterField} ?? '');
+                if ($setterField === 'bodytext' || $setterField === 'bodytext2') {
+                    $parsedown = GeneralUtility::makeInstance(Parsedown::class);
+                    $collectionItem->{'set' . ucfirst($validSetterField)}($parsedown->text($cockpitCollectionItem->{$setterField} ?? ''));
+                } else {
+                    $collectionItem->{'set' . ucfirst($validSetterField)}($cockpitCollectionItem->{$setterField} ?? '');
+                }
             }
         }
         return $collectionItem;
