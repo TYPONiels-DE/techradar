@@ -54,6 +54,9 @@
             <trans-unit id="tx_techradar_domain_model_techradar.level">
                 <source>Level</source>
             </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_techradar.tags">
+                <source>Tags</source>
+            </trans-unit>
             <trans-unit id="tx_techradar_domain_model_techradar.mediabgcolor">
                 <source>Background Color</source>
             </trans-unit>
@@ -109,6 +112,9 @@
             </trans-unit>
             <trans-unit id="tx_techradar_domain_model_lernplan.level">
                 <source>Level</source>
+            </trans-unit>
+            <trans-unit id="tx_techradar_domain_model_lernplan.tags">
+                <source>Tags</source>
             </trans-unit>
             <trans-unit id="tx_techradar_domain_model_lernplan.mediabgcolor">
                 <source>Background Color</source>
