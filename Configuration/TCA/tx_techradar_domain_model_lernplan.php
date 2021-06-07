@@ -225,6 +225,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
             'label' => $TNL . 'tx_techradar_domain_model_lernplan.bodytext',
             'config' => array(
                 'type' => 'text',
+                'enableRichtext' => true,
+                'readOnly' => true,
                 'size' => 30,
                 'eval' => 'trim'
             ),
@@ -234,6 +236,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_lernplan'] = array(
             'label' => $TNL . 'tx_techradar_domain_model_lernplan.bodytext',
             'config' => array(
                 'type' => 'text',
+                'enableRichtext' => true,
+                'readOnly' => true,
                 'size' => 30,
                 'eval' => 'trim'
             ),

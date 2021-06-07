@@ -1,40 +1,40 @@
 <?php
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die ('Access denied.');
 }
 $TNL = 'LLL:EXT:techradar/Resources/Private/Language/locallang_db.xlf:';
 $_EXTKEY = $GLOBALS['_EXTKEY'] = 'techradar';
 
 $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
-	'ctrl' => array(
-		'title' => $TNL . 'tx_techradar_domain_model_techradar',
+    'ctrl' => array(
+        'title' => $TNL . 'tx_techradar_domain_model_techradar',
         'label' => 'title',
-		'tstamp' => 'tstamp',
-		'crdate' => 'crdate',
-		'cruser_id' => 'cruser_id',
-		'dividers2tabs' => TRUE,
-		'sortby' => 'sorting',
-		'versioningWS' => 2,
-		'versioning_followPages' => TRUE,
-		'languageField' => 'sys_language_uid',
-		'transOrigPointerField' => 'l10n_parent',
-		'transOrigDiffSourceField' => 'l10n_diffsource',
-		'delete' => 'deleted',
-		'enablecolumns' => array(
-			'disabled' => 'hidden',
-			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-			'fe_group' => 'fe_group',
-		),
-		'searchFields' => 'title,subtitle,teaser,bodytext,status,quadrant,area,level,cpid,visible',
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
+        'tstamp' => 'tstamp',
+        'crdate' => 'crdate',
+        'cruser_id' => 'cruser_id',
+        'dividers2tabs' => TRUE,
+        'sortby' => 'sorting',
+        'versioningWS' => 2,
+        'versioning_followPages' => TRUE,
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'delete' => 'deleted',
+        'enablecolumns' => array(
+            'disabled' => 'hidden',
+            'starttime' => 'starttime',
+            'endtime' => 'endtime',
+            'fe_group' => 'fe_group',
+        ),
+        'searchFields' => 'title,subtitle,teaser,bodytext,status,quadrant,area,level,cpid,visible',
+        'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Category.php',
         'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'ext_icon.png'
-	),
-	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title,subtitle,teaser,bodytext,status,quadrant,area,level,cpid,visible',
-	),
-	'types' => array(
-		'1' => array('showitem' => '
+    ),
+    'interface' => array(
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title,subtitle,teaser,bodytext,status,quadrant,area,level,cpid,visible',
+    ),
+    'types' => array(
+        '1' => array('showitem' => '
 			    --div--;Techradar Datensatz,
 			        --palette--;Basic;basic,
 			        --palette--;Cockpit;cockpit,
@@ -52,9 +52,9 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
 			--linebreak--,fe_group;LLL:EXT:cms/locallang_ttc.xlf:fe_group_formlabel,
 			--linebreak--,editlock,
 		'),
-	),
-	'palettes' => array(
-		'basic' => array('showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource'),
+    ),
+    'palettes' => array(
+        'basic' => array('showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource'),
         'cockpit' => array('showitem' => 'cpid,visible'),
         'titles' => array('showitem' => 'title,subtitle'),
         'urls' => array('showitem' => 'url,baseurl'),
@@ -62,8 +62,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
         'options' => array('showitem' => 'status,quadrant'),
         'options2' => array('showitem' => 'area,level'),
         'bgoptions' => array('showitem' => 'mediabgcolor,tags'),
-	),
-	'columns' => array(
+    ),
+    'columns' => array(
         'sys_language_uid' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
@@ -79,8 +79,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
             'exclude' => 1,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
             'config' => array(
-                'type'                => 'select',
-                'renderType'          => 'selectSingle',
+                'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_techradar_domain_model_techradar',
                 'foreign_table_where' => 'AND tx_techradar_domain_model_techradar.pid=###CURRENT_PID### AND tx_techradar_domain_model_techradar.sys_language_uid IN (-1,0)',
             ),
@@ -170,8 +170,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
                 'eval' => 'trim'
             ),
         ),
-		'title' => array(
-			'exclude' => 1,
+        'title' => array(
+            'exclude' => 1,
             'label' => $TNL . 'tx_techradar_domain_model_techradar.title',
             'config' => array(
                 'type' => 'input',
@@ -179,7 +179,7 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
                 'size' => 30,
                 'eval' => 'trim'
             ),
-		),
+        ),
         'subtitle' => array(
             'exclude' => 1,
             'label' => $TNL . 'tx_techradar_domain_model_techradar.subtitle',
@@ -225,6 +225,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
             'label' => $TNL . 'tx_techradar_domain_model_techradar.bodytext',
             'config' => array(
                 'type' => 'text',
+                'enableRichtext' => true,
+                'readOnly' => true,
                 'size' => 30,
                 'eval' => 'trim'
             ),
@@ -234,6 +236,8 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
             'label' => $TNL . 'tx_techradar_domain_model_techradar.bodytext',
             'config' => array(
                 'type' => 'text',
+                'enableRichtext' => true,
+                'readOnly' => true,
                 'size' => 30,
                 'eval' => 'trim'
             ),
@@ -361,5 +365,5 @@ $GLOBALS['TCA']['tx_techradar_domain_model_techradar'] = array(
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             )
         ],
-	),
+    ),
 );
