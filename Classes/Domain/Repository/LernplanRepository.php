@@ -2,6 +2,9 @@
 
 namespace TN\Techradar\Domain\Repository;
 
+use \TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Extbase\Annotation\Inject;
+
 /**
  * Class LernplanRepository
  *
@@ -9,6 +12,21 @@ namespace TN\Techradar\Domain\Repository;
  */
 class LernplanRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
+    /**
+     * @var \TYPO3\CMS\Core\Context\Context
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+    */
+    protected $context;
+
+    /**
+     * LernplanRepository constructor.
+     * @param Context $context
+     */
+    public function __construct(Context $context)
+    {
+        $this->context = $context;
+    }
 
     /**
      * Initialize the repository with default query settings
@@ -41,7 +59,7 @@ class LernplanRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->like('sysLanguageUid', (string) -1)
         );
         $matching[] = $query->logicalOr(
-            $query->like('sysLanguageUid', $GLOBALS['TSFE']->context->getAspect('language')->getId())
+            $query->like('sysLanguageUid', ($this->context->getAspect('language'))->getId())
         );
         $query->matching(
             $query->logicalAnd(
