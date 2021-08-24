@@ -2,7 +2,7 @@
 
 namespace TN\Techradar\Domain\Repository;
 
-use \TYPO3\CMS\Core\Context\Context;
+use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Extbase\Annotation\Inject;
 
 /**
@@ -61,6 +61,7 @@ class TechradarRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->like('sysLanguageUid', (string) -1)
         );
         $matching[] = $query->logicalOr(
+            /** @phpstan-ignore-next-line */
             $query->like('sysLanguageUid', ($this->context->getAspect('language'))->getId())
         );
         $query->matching(
