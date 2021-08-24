@@ -12,3 +12,6 @@ foreach (['tx_techradar_domain_model_techradar', 'tx_techradar_domain_model_lern
     'Configuration/TypoScript',
     'Techradar (Solr)'
 );
+
+$GLOBALS['TCA']['tx_techradar_domain_model_techradar']['ctrl']['readOnly'] = 1;
+$GLOBALS['TCA']['tx_techradar_domain_model_lernplan']['ctrl']['readOnly'] = 1;
