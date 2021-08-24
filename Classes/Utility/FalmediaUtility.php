@@ -17,7 +17,7 @@ class FalmediaUtility
 
     /**
      * @var ResourceFactory
-     * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
      */
     protected $resourceFactory = null;
 
