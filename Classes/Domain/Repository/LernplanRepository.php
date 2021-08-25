@@ -20,11 +20,19 @@ class LernplanRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $context;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
+     * @TYPO3\CMS\Extbase\Annotation\Inject
+     */
+    protected $objectManager;
+
+    /**
      * LernplanRepository constructor.
      * @param Context $context
      */
-    public function __construct(Context $context)
+    public function __construct(\TYPO3\CMS\Extbase\Object\ObjectManager $objectManager, Context $context)
     {
+        parent::__construct($objectManager);
+        $this->objectManager = $objectManager;
         $this->context = $context;
     }
 
